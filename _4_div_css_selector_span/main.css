@@ -1,0 +1,21 @@
+/*
+div.divclass {
+    background-color: beige;
+}
+*/
+
+div#firstDivision {
+    background-color: goldenrod;
+    display: inline-block;
+    width: 500px;
+}
+div#secondDivision {
+    background-color:aquamarine;
+    display: inline-block;
+    width: 600px;
+}
+div#thirdDivision {
+    background-color: greenyellow;
+    display: inline-block;
+    width: 700px;
+}

@@ -1,0 +1,82 @@
+<html>
+    <head>
+    </head>
+
+    <body>
+        <h1 id = 'h11'>여기입니다.</h1>
+        <h1 id = 'h12'>요기일까?</h1>
+        <h1 id = 'h13'>여긴가?</h1>
+        <script>
+
+            // JS는 HTML을 하나의 변수(document)로 바라본다.
+            // 그러면 특정 부분을 어떻게 캐치하는가? document, query selector를 사용한다.
+
+            // 변수, variable
+
+            const userMsg = prompt(); // 사용자 입력 : prompt()
+            const userNumber = parseInt(userMsg); // 사용자 입력 문자열 ---> 정수, 사용자는 정수를 무조건 입력한다고 가정.
+            const result = userNumber % 2;
+
+            let msg = "";
+
+            if (result == 1) {
+                msg = userMsg+"는 홀수입니다.";
+            }
+            else {
+                msg = userMsg+"는 짝수입니다.";
+            }
+
+            document.querySelector('h1#h11').textContent = msg;
+
+            // const userMsg = prompt(); // 사용자로부터 값을 입력받는 창이 뜬다. : prompt
+            // console.log('사용자가 입력한 메시지는 '+userMsg); // debugging 용도
+            // // document.querySelector('h1#h13').textContent = userMsg; // document(전체 문서에서) . querySelector('h1') => h1 부분만 선택하여 가리킨다.
+
+            // const allh1 = document.querySelectorAll('h1'); // allh1에는 h1 h1 h1 세 개가 들어있다.
+            // allh1.forEach( (elem, index) => { elem.textContent = userMsg; } ); // forEach, 각각에 대해서 모두 다룬다.
+
+            // let a = 10;
+            // let b = 20;
+            // let c = a + b;
+            // const d = a * 10;
+
+            // // 제곱
+            // const e = 2**3; // 2의 3승, 2^3과는 다르다.
+
+            // const : 한 번 대입하면 변경 불가.
+            // let   : 일반 변수, 값을 넣고 계속 바꿀 수 있음.
+            // const a = 1;
+            // a = 2; // Error가 발생한다.
+            // let b = 1;
+            // console.log('b의 초기값 : '+b);
+
+            // b = 2;
+            // console.log('b의 변경된 값 : '+b);
+
+            // '123' + 5 ---> 123 + 5 ---> 128
+            // 문자열을 숫자로 바꿔주는 함수... parseInt (문자열) ---> number[int]로 나온다.
+            // parse : 자르다, I am a boy => I, am, a, boy. 구성요소 단위로 잘라내는 것을 parsing이라고 한다.
+            // parseInt('123') // '123' ---> 123
+            // console.log('parseInt의 결과는 : '+(parseInt('123')+5));
+            // console.log('parseInt의 결과 2는 : '+parseInt('123')+5); // ---> 이와 같이 순서를 지정해주지 않으면 1235가 나온다.
+
+            // console.log('string concat의 문자열 더하기 숫자 결과는 '+'123'+5); // 1235, 프로그래머의 의도가 명확하게 들어가지 않을 수도 있다.
+
+            // 2. typeof ---> 자료형의 이름을 알려줌
+            // + : string을 연결해서 붙이는 연산자 string concatenation operator
+            // console.log('hello의 자료형은 '+typeof("Hello")); // string
+            // console.log('4의 자료형은 '+typeof(4)); // number
+            // console.log('3.14의 자료형은 '+typeof(3.14)); // number
+
+            // 1.
+            // 출력 ---> chrome ---> 개발자 도구(Inspector) ---> Console
+            // console.log("이것은 자바스크립트입니다."); => " "
+            // console.log('이것은 자바스크립트입니다.'); => ' '
+            // console.log(`이것은 자바스크립트입니다. 
+            // by backtick`); // => ` ` backtick, 입력한 그대로 화면에 표시된다.
+            // console.log('이것은\n자바스크립트입니다. by quotation mark');
+            
+        </script>
+    </body>
+
+</html>
