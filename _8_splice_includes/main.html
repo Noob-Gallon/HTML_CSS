@@ -1,0 +1,143 @@
+<html>
+    <head>
+    </head>
+
+    <body>
+        
+        <h1 id="grade">
+        </h1>
+
+        <script>
+            
+            const myArray = [1, 'wow', 2, 'apple', 'banana', 3.14, 'banana', 'apple', true, false, 2, 'apple'];
+
+            // Quiz. 2 배열에 포함된 사과는 몇 개인가?
+            
+            // My code
+
+            // let len = myArray.length;
+            // let idx;
+            // let num = 0;
+
+            // while (true) {
+                
+            //     idx = myArray.lastIndexOf('apple', len);
+
+            //     if (idx === -1) {
+            //         break;
+            //     }
+            //     else {
+            //         num++;
+            //         len = idx-1;
+            //     }
+            // }
+
+            // Pf's code, ver. 1
+
+            // let cnt = 0;
+            // let _idx = 0;
+
+            // while (true) {
+            //     _idx = myArray.indexOf('apple', _idx);
+
+            //     if (_idx < 0) {
+            //         break;
+            //     }
+
+            //     cnt++;
+            //     _idx++;
+            // }
+
+            // console.log('사과 개수는 : '+cnt);
+
+            // Pf's code, ver. 2
+
+            // let cnt = 0;
+
+            // for (let i = 0; i < myArray.length; i++) {
+            //     if (myArray[i] === 'apple') {
+            //         cnt++;
+            //     }
+            // }
+
+            // console.log('사과 개수는 : '+cnt);
+
+            // -------------------------------------------------------------- //
+
+            // Quiz. 1
+            // 배열에 포함된 모든 사과('apple')를 제거하시오.
+
+            // while (true) {
+
+            //     const num = myArray.lastIndexOf('banana');
+
+            //      if (num < 0) {
+            //        break;
+            //      }
+
+            //     myArray.splice(num, 1);
+            // }
+
+            // console.log('myArray : '+myArray);
+
+            // -------------------------------------------------------------- //
+
+            // 배열 속의 데이터 찾기
+
+            // lastIndexOf('apple', fromIdx); => 마지막으로 해당 element가 나타나는 log. 최신 데이터의 Idx를 찾는다.
+            // lastIndexOf method를 사용할 때 주의해야 할 점, 이 함수는 fromIdx부터 역순으로 탐색한다.
+            // console.log('Apple이 있냐? '+myArray.lastIndexOf('apple'));
+            // console.log('Apple이 있냐? '+myArray.lastIndexOf('apple', 7));
+
+            // indexOf('apple, fromidx');
+            // console.log('Apple이 있냐? '+myArray.indexOf('apple', 0)); // 0번 index부터 찾는다, 2
+            // console.log('Apple이 있냐? '+myArray.indexOf('apple', 3)); // 3번 index부터 찾는다, -1
+            // console.log('Apple이 있냐? '+myArray.indexOf('apple', 2)); // 2번 index부터 찾는다, 2
+
+            // indexof, 배열 속 요소의 index 찾기. 있으면 해당 index, 없으면 -1 리턴.
+            // console.log('Apple이 있냐? '+myArray.indexOf('apple'));
+            // console.log('Apple이 있냐? '+myArray.indexOf('orange')); // 없음.
+
+            // console.log('Apple이 있냐? '+myArray.includes('apple'));
+            // console.log('Orange가 있냐? '+myArray.includes('orange'));
+            
+            // if (myArray.includes('apple') === true) {
+            //     console.log('apple이 있음.');
+            // }
+            // else {
+            //     console.log('apple이 없음.');
+            // }
+
+            // -------------------------------------------------------------- //
+
+            // 데이터의 중간 수정 splice
+
+            // 삭제
+            // myArray.splice(1, 1); // 1번 Index부터, 1개를 삭제
+            // myArray.splice(1,2);
+            // myArray.splice(1); // 1번 Index뒤로 다 지워버림.
+            // console.log(myArray);
+
+            // 삭제 후 추가
+            // myArray.splice(1, 1, 'orange', 'melon'); // 데이터를 삭제 후 추가한다.
+            // console.log(myArray);
+
+            // -------------------------------------------------------------- //
+
+            // 단순 추가
+            // myArray.splice(1, 0, 'orange', 'melon', '333', 55); // 삭제를 수행하지 않고 데이터를 추가, 1번 앞에 넣는다.
+            
+            // unshift와 같은 효과의 코드
+            // myArray.splice(0, 0, 'orange');
+            // myArray.unshift('orange');
+            
+            // push
+            // myArray.splice(myArray.length, 0, 'orange');
+            // myArray.push('orange');
+            // console.log(myArray);
+
+            // -------------------------------------------------------------- //
+
+        </script>
+    </body>
+</html>
