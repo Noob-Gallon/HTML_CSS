@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <style>
+            div {
+                border: 10px solid green;
+                font-size: 60px;
+            }
+            
+            /* 여러가지 형태의 화면이 존재하는 세상에서
+               mediaquery는 굉장히 중요한 역할을 한다. */
+            @media (max-width:800px) { /* max-width:800px; 로 설정하면, 800보다 작아지면 display:none;이 된다. */
+                div {
+                    display:none;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <div>
+            Responsive
+        </div>
+    </body>
+
+</html>
