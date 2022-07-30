@@ -9,6 +9,24 @@
         </h1>
         <script>
 
+            //   ---------------------------------------------------------------------
+
+            // 변수 안에 변수를 담는 방법.
+            // ` ` back-tick을 이용해서 문자열 변수를 선언할 때만 원활하게 동작한다?
+
+            const a_person = { name:'정동교', age:23 };
+            let num = 30;
+
+            const msg1 = `My name is ${a_person.name}.`;
+            const msg2 = `My age is ${a_person.age}.`;
+            const msg3 = `A number : ${num+1}`;
+
+            console.log(msg1);
+            console.log(msg2);
+            console.log(msg3);
+
+            //   ---------------------------------------------------------------------
+
             // Literal ---> 값 자체
             // 1, 2, 3 : Integer literal
             // 3.14    : Floating point number literal
