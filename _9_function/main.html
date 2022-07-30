@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 
 <html>
@@ -110,4 +111,118 @@
 
         </script>
     </body>
+=======
+<!DOCTYPE html>
+
+<html>
+    <head>
+    </head>
+
+    <body>
+        <h1 id = "grade">
+        </h1>
+        <script>
+
+            // Literal ---> 값 자체
+            // 1, 2, 3 : Integer literal
+            // 3.14    : Floating point number literal
+            // 'hello' : string literal
+            // Object literal(객체 리터럴) : Array와 똑같이 생겼다. 넣는 위치를 값으로 지정할 수 있음.
+            // Array : [ '찰스', 20 ] : Index 0, 1.
+            // Object Literal : [ '찰스', 20 ] : name, age
+            
+            // const person = [ '찰스', 20 ]; ---> Array
+            const person = { name:'찰스', age:20 }; // object literal : 배열은 Index가 있지만, object literal은 이름을 부여한다.
+
+            console.log('keys : '+Object.keys(person)); // object literal 안에 들어있는 이름들을 배열 형태로 넘겨준다?
+            console.log('values : '+Object.values(person));
+
+            console.log('person name : '+person.name);
+            console.log('person name : '+person['name']);
+
+            console.log('person name : '+person.age);
+            person.age = 35;
+            console.log('person name : '+person.age);
+
+            //   ---------------------------------------------------------------------
+
+            // function parameter ---> 함수 선언할 때 써주는 것은 parameter라고 하며,
+            // function argument ---> 함수를 호출할 때 써주는 값들은 argument라고 한다.
+
+            
+            // 1 ---------------------------------------------------------------------
+
+            // function sayHello() {
+            //     console.log('안녕하세요.');
+            // }
+
+            // function sayHello() {
+            //     console.log('안녕하세요!');
+            //     return '바이!';
+            // }
+
+            function sayHello() {
+                console.log('안녕하세요!!!');
+                return ['바이!', 10, false];
+            }
+
+            function sayHelloWithParameter(name) {
+                console.log(name+'님, 안녕하세요.');
+            }
+
+            // 2 ---------------------------------------------------------------------
+
+            // Arrow Function : 가장 JS다운 방식.
+
+            const k = () => {                   // 함수 선언방법(2), const k라는 변수에 console.log('안녕하세요2'); 라는 값을 넣는다.
+                console.log('안녕하세요 2');
+            }
+            const k2 = (name) => {console.log(name+'님, 안녕하세요 2')}; // parameter를 선언할 수 있음.
+            
+            // 3 ---------------------------------------------------------------------
+
+            const v = function() {console.log('안녕하세요 3')};
+            const v2 = function(name) {console.log(name+'님, 안녕하세요 3-2')};
+
+            sayHello();
+            sayHelloWithParameter('정동교');
+
+            k();
+            k2('김민수');
+
+            v();
+            v2('고명훈');
+
+            // 4 ---------------------------------------------------------------------
+            // return 값, JS에서 반환값은 반드시 하나이다. 여러 개를 넘겨주려면, Array를 이용하면 된다.
+
+            const res = sayHello();
+            console.log('sayHello의 반환값: '+res[2]); // 아무것도 안돌려주면 undefined를 반환한다.(c언어의 void)
+
+            // 5 ---------------------------------------------------------------------
+
+            // parameters vs. arguments
+
+            function sayHelloWithParameters(name, age) {
+                console.log(age+'살, '+name+'님, 안녕하세요!');
+            }
+
+            sayHelloWithParameters('찰스', 20, false); // arguments의 개수가 달라도 출력이 된다.
+            sayHelloWithParameters('찰스'); // arguments는 오른쪽부터 입력된다.
+
+            function sayHelloWithParameterArray(values) {
+                console.log(values[1]+'살, '+values[0]+'님, 안녕하세요!');
+            }
+
+            sayHelloWithParameterArray(['찰스', 20]);
+            
+            // JS는 typechecking이 flexible하다.
+            // C, C++은 typechecking이 상당히 strict하다.
+            // Typechecking을 철저하게해야 프로그램이 잘못 돌 가능성이 없다.
+            // 그래서 일이 잘못되면 크게 잘못된다. => 끽해야 Web Browser라서,
+            // 크게 잘못될 일이 없음.
+
+        </script>
+    </body>
+>>>>>>> cd41ee726d2b69d751d27c906e4a5505a6039cb0
 </html>
