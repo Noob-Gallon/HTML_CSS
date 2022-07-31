@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <script>
+            let days = ["mon", "tue", "wed"];
+
+            days[1] = '화요일';
+
+            days.push('thu');
+            days.unshift('sun');
+            console.log(days);
+            
+            for (let index = 0; index < days.length; index++) {
+                console.log(days[index]);
+            }
+
+            for (let day of days) {
+                console.log(day);
+            }
+            // for of는 for in과 다르다.
+            // for in은 객체에 대해서 사용한다.
+
+            // for (let x of days) {
+            //     console.log(x);
+            // }
+
+            
+        </script>
+    </body>
+</html>

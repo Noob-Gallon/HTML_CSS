@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    
+    <body>
+        <script>
+            const superman = {
+                name: 'clark',
+                age: 30
+            };
+
+            console.log(superman);
+
+            superman.hairColor = 'black';
+            superman['hobby'] = 'football';
+
+            console.log(superman);
+
+            delete superman.age;
+            console.log(superman);
+
+
+            function makeObjectLiteral(_name, _age) {
+                return {
+                    name:_name, // name,
+                    age:_age, // age, 와 같다. 
+                    // 단, underscore 붙여주는게 좀더 깔끔.
+                    hobby:'football'
+                };
+            }
+
+            const Mike = makeObjectLiteral('Mike', 30);
+            console.log(Mike);
+
+            console.log('age' in Mike);
+            console.log('birthDay' in Mike);
+
+            const isAdult = (user) => {
+                if (user.age < 20) {
+                    return false;
+                }
+                else {
+                    return true;
+                }
+            };
+
+            const Mice = {
+                name: "Mice",
+                age: 30
+            };
+
+            const Jane = {
+                name: "Jane"
+            };
+
+            console.log('He/She is Adult : '+isAdult(Mice));
+            console.log(isAdult(Jane)); // age가 없어서 undefined.
+            // 그래서 값이 true가 반환된다.
+            // undefined === true?
+
+            function isAdult2(user) {
+                if (!('age' in user) || user.age < 20) {
+                    // user에 age가 없거나, age가 20살 미만이면
+                    return false; // flase를 반환한다.
+                }
+
+                return true;
+            };
+
+            console.log('He/She is Adult : '+isAdult2(Mice));
+            console.log('He/She is Adult : '+isAdult2(Jane));
+
+            // for in ---------------------------------------------
+
+            const Sam = {
+                name: "Sam",
+                age: 30
+            };
+
+            for (x in Sam) {
+                console.log(Sam[x]); // Sam['age'];
+            } // x는 Sam Object Literal의 Key값을 반환받는다.
+              // for in 문의 활용
+
+        </script>    
+    </body>
+</html>

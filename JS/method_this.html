@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+
+    <body>
+        <script>
+            const superman = {
+                name: 'clark',
+                age: 33,
+                fly: function() {
+                    console.log('날아갑니다.');
+                },
+                run() {
+                    console.log('달려갑니다.');
+                }
+            }
+
+            // const user = {
+            //     name: 'Mike',
+            //     sayHello() {
+            //         console.log(`Hello, I'm ${user.name}`);
+            //     }
+            // } // 문제가 발생할 수 있는 code
+
+            // this의 활용 -------------------------------------
+            // 화살표 함수는 자신만의 this를 가지지 않는다.
+            // 화살표 함수에서 this를 사용하면 외부에서 this
+            // 를 가져온다.
+
+            // let boy = {
+            //     name:'Mike',
+            //     showName: function() {
+            //         console.log(boy.name);
+            //     }
+            // };
+
+            let boy = {
+                name:'Mike',
+                showName: function() {
+                    console.log(this.name);
+                }
+            };
+
+            let man = boy;
+            man.name = "Tom";
+
+            // man의 이름을 변경하면, boy의 이름도 바뀐다.
+            // 두 개의 Object가 동일한 대상을 가리킨다.
+            boy.showName();
+
+            boy = null;
+            // 이제 boy는 null이므로, man으로만 접근 가능하다.
+
+            man.showName();
+            // 이러면 동작할 수 없다.
+            // 따라서, boy Object 내에서 boy를 this로 바꿔준다.
+        </script>
+    </body>
+</html>
