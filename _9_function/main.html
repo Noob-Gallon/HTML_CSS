@@ -11,19 +11,87 @@
 
             //   ---------------------------------------------------------------------
 
+            // function ---> method
+            // Object literal에 method를 추가하는 방법
+
+            const person = { name:'정동교', age:23 };
+
+            // Object Literal 안에 Object Literal을 추가하는 방법.
+            // Embedding an Object Literal in an Object Literal.
+            const a = { 
+                name:'찰스',
+                detail: {
+                    name: '톰',
+                    age: 10
+                }
+            };
+
+            console.log(a.detail.name);
+
+            person.sayHello = () => { console.log('Hello!!!'); };
+            person.sayHello2 = (v) => { console.log(v+'! Hi!'); };
+            
+            // Object Literal에 method를 추가하는 것은 바람직하지 못하다.
+            // 단순히 값만 추가하는 것이 더 좋다.
+            // Object Literal이 유용하긴 하지만, 여러 개를 만들거면
+            // Class를 만드는 것이 더 낫다.
+
+            person.areYouOlerThan = (_age) => { 
+                if (person.age > _age) {
+                    return true;
+                } 
+                else {
+                    return false;
+                }
+            };
+
+            person.sayHello();
+            person.sayHello2('찰스');
+
+            let check_age;
+            check_age = prompt();
+            parseInt(check_age);
+
+            console.log('Are you older than '+check_age+'? : '+person.areYouOlerThan(check_age));
+
+            //   ---------------------------------------------------------------------
+
+            // Object literal을 함수의 argument로 넘겨주는 방법
+
+            // const showOL = (ol) => {    // ol 이라는 Object literal을 parameter로 설정한다.
+            //     const keys = Object.keys(ol);   // ol에 들어있는 모든 키를 keys라는 배열에 담는다. forEach는 for문을 돈다고 생각하면 된다.
+            //     keys.forEach( (elem, idx) => {  // keys 배열에 들어있는 원소 각각에 대하여 element, index를 받고 출력한다.
+            //         console.log(elem+' ---> '+ol[elem]) // Object literal은 index를 key로 사용하기 때문에, key로 indexing을 한다고 생각.
+            //         });
+            // };
+
+            // const showOL2 = (ol) => {
+            //     const keys = Object.keys(ol);
+            //     for(let i = 0; i < keys.length; i++) {
+            //         console.log(keys[i]+' ---> '+ol[keys[i]]);
+            //     }
+            // }
+
+            // const a_person = { name:'정동교', age:23 };
+
+            // showOL(a_person);
+            // showOL2(a_person);
+
+            //   ---------------------------------------------------------------------
+
             // 변수 안에 변수를 담는 방법.
             // ` ` back-tick을 이용해서 문자열 변수를 선언할 때만 원활하게 동작한다?
 
-            const a_person = { name:'정동교', age:23 };
-            let num = 30;
+            // const a_person = { name:'정동교', age:23 };
+            // let num = 30;
 
-            const msg1 = `My name is ${a_person.name}.`;
-            const msg2 = `My age is ${a_person.age}.`;
-            const msg3 = `A number : ${num+1}`;
+            // const msg1 = `My name is ${a_person.name}.`;
+            // const msg2 = `My age is ${a_person.age}.`;
+            // const msg3 = `A number : ${num+1}`;
 
-            console.log(msg1);
-            console.log(msg2);
-            console.log(msg3);
+            // console.log(msg1);
+            // console.log(msg2);
+            // console.log(msg3);
 
             //   ---------------------------------------------------------------------
 
@@ -36,17 +104,17 @@
             // Object Literal : [ '찰스', 20 ] : name, age
             
             // const person = [ '찰스', 20 ]; ---> Array
-            const person = { name:'찰스', age:20 }; // object literal : 배열은 Index가 있지만, object literal은 이름을 부여한다.
+            // const person = { name:'찰스', age:20 }; // object literal : 배열은 Index가 있지만, object literal은 이름을 부여한다.
 
-            console.log('keys : '+Object.keys(person)); // object literal 안에 들어있는 이름들을 배열 형태로 넘겨준다?
-            console.log('values : '+Object.values(person));
+            // console.log('keys : '+Object.keys(person)); // object literal 안에 들어있는 이름들을 배열 형태로 넘겨준다?
+            // console.log('values : '+Object.values(person));
 
-            console.log('person name : '+person.name);
-            console.log('person name : '+person['name']);
+            // console.log('person name : '+person.name);
+            // console.log('person name : '+person['name']);
 
-            console.log('person name : '+person.age);
-            person.age = 35;
-            console.log('person name : '+person.age);
+            // console.log('person name : '+person.age);
+            // person.age = 35;
+            // console.log('person name : '+person.age);
 
             //   ---------------------------------------------------------------------
 
@@ -65,60 +133,60 @@
             //     return '바이!';
             // }
 
-            function sayHello() {
-                console.log('안녕하세요!!!');
-                return ['바이!', 10, false];
-            }
+            // function sayHello() {
+            //     console.log('안녕하세요!!!');
+            //     return ['바이!', 10, false];
+            // }
 
-            function sayHelloWithParameter(name) {
-                console.log(name+'님, 안녕하세요.');
-            }
+            // function sayHelloWithParameter(name) {
+            //     console.log(name+'님, 안녕하세요.');
+            // }
 
             // 2 ---------------------------------------------------------------------
 
             // Arrow Function : 가장 JS다운 방식.
 
-            const k = () => {                   // 함수 선언방법(2), const k라는 변수에 console.log('안녕하세요2'); 라는 값을 넣는다.
-                console.log('안녕하세요 2');
-            }
-            const k2 = (name) => {console.log(name+'님, 안녕하세요 2')}; // parameter를 선언할 수 있음.
+            // const k = () => {                   // 함수 선언방법(2), const k라는 변수에 console.log('안녕하세요2'); 라는 값을 넣는다.
+            //     console.log('안녕하세요 2');
+            // }
+            // const k2 = (name) => {console.log(name+'님, 안녕하세요 2')}; // parameter를 선언할 수 있음.
             
             // 3 ---------------------------------------------------------------------
 
-            const v = function() {console.log('안녕하세요 3')};
-            const v2 = function(name) {console.log(name+'님, 안녕하세요 3-2')};
+            // const v = function() {console.log('안녕하세요 3')};
+            // const v2 = function(name) {console.log(name+'님, 안녕하세요 3-2')};
 
-            sayHello();
-            sayHelloWithParameter('정동교');
+            // sayHello();
+            // sayHelloWithParameter('정동교');
 
-            k();
-            k2('김민수');
+            // k();
+            // k2('김민수');
 
-            v();
-            v2('고명훈');
+            // v();
+            // v2('고명훈');
 
             // 4 ---------------------------------------------------------------------
             // return 값, JS에서 반환값은 반드시 하나이다. 여러 개를 넘겨주려면, Array를 이용하면 된다.
 
-            const res = sayHello();
-            console.log('sayHello의 반환값: '+res[2]); // 아무것도 안돌려주면 undefined를 반환한다.(c언어의 void)
+            // const res = sayHello();
+            // console.log('sayHello의 반환값: '+res[2]); // 아무것도 안돌려주면 undefined를 반환한다.(c언어의 void)
 
             // 5 ---------------------------------------------------------------------
 
             // parameters vs. arguments
 
-            function sayHelloWithParameters(name, age) {
-                console.log(age+'살, '+name+'님, 안녕하세요!');
-            }
+            // function sayHelloWithParameters(name, age) {
+            //     console.log(age+'살, '+name+'님, 안녕하세요!');
+            // }
 
-            sayHelloWithParameters('찰스', 20, false); // arguments의 개수가 달라도 출력이 된다.
-            sayHelloWithParameters('찰스'); // arguments는 오른쪽부터 입력된다.
+            // sayHelloWithParameters('찰스', 20, false); // arguments의 개수가 달라도 출력이 된다.
+            // sayHelloWithParameters('찰스'); // arguments는 오른쪽부터 입력된다.
 
-            function sayHelloWithParameterArray(values) {
-                console.log(values[1]+'살, '+values[0]+'님, 안녕하세요!');
-            }
+            // function sayHelloWithParameterArray(values) {
+            //     console.log(values[1]+'살, '+values[0]+'님, 안녕하세요!');
+            // }
 
-            sayHelloWithParameterArray(['찰스', 20]);
+            // sayHelloWithParameterArray(['찰스', 20]);
             
             // JS는 typechecking이 flexible하다.
             // C, C++은 typechecking이 상당히 strict하다.
