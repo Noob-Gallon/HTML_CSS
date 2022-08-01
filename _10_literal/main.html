@@ -7,6 +7,70 @@
 
     <body>
         <script>
+            // 아래 내용은 object literal의 정보를 알고 있어야 가능한 방법.
+
+            // 1) key들의 개수가 같은지 비교
+            // 2) key의 각각의 value가 같은지 비교
+            
+            const cmp_ol_unknown = (_x1, _x2) => {
+                let _x1_keys = Object.keys(_x1);
+                let _x2_keys = Object.keys(_x1);
+                let isEqual = true;
+
+                if (_x1_keys.length !== _x2_keys.length) {
+                    return false;
+                }
+
+                _x1_keys = _x1_keys.sort();
+                _x2_keys = _x2_keys.sort();
+
+                // forEach Arrow 함수 내에서는 return 하더라도
+                // forEach만 종료된다.
+                // 따라서 flag를 하나 사용해주어야 한다.
+
+                _x1_keys.forEach( (elem, idx) => {
+                    if (_x1_keys[idx] !== _x2_keys[idx]) {
+                        isEqual = false;
+                    }
+                    // 먼저, key의 이름이 같은지 확인한다.
+                    // key의 이름이 다르다면 return false;
+                    // why? _x1_keys, _x2_keys는 sort된 상태이므로,
+                    // 정렬하고 같은 idx에서 값이 다르면 서로 다른 object literal이다.
+                    
+                    if (_x1[_x1_keys[idx]] !== _x2[_x1_keys[idx]]) {
+                        isEqual = false;
+                    }
+                    // key의 이름이 같으므로, key에 따른 value 값이 같은지 비교한다.
+                    // _x1_keys[idx], _x2_keys[idx]는 key를 의미한다.
+                    // 각각의 키를 _x1[...], _x2[...]에 입력하게 되면,
+                    // idx에 따른 value를 비교하는 것이 된다.
+                    // 정리하자면, sort된 keys 배열에서 idx에 따라 key 값이 같은지 먼저 비교,
+                    // 그 후에 key 값을 _x1, _x2에 넣어서 key가 갖는 value가 같은지 비교한다.
+                })
+
+                return isEqual;
+            };
+
+            // object literal 내용 비교
+            
+            const a = {name:'찰스', age:20};
+            const c = {name:'찰스', age:26, city:'상파울루'};
+
+            console.log('com_ol(a, c): '+cmp_ol_unknown(a,c));
+
+            const cmp_ol = (_x1, _x2) => {
+                if ((_x1.name === _x2.name) && (_x1.age === _x2.age)) {
+                    return true;
+                }
+                 else {
+                    return false;
+                }
+            };
+
+            const d = a;
+
+            // console.log('com_ol(a, c): '+cmp_ol(a, c)); // false
+            // console.log('com_ol(a, d): '+cmp_ol(a, d)); // true        
 
             // const a = 1;
             // const b = 1;
@@ -16,20 +80,20 @@
             // Literal은 쌍둥이 같은 존재이다. 메모리 간에 서로 다른 덩어리로 존재하기 때문에
             // 내용이 같다고 두 개의 리터럴이 같은 것은 아니다.
 
-            const a = {name:'찰스', age:20};
-            const b = {name:'찰스', age:25};
-            const c = {name:'찰스', age:20};
-            const d = a;
+            // const a = {name:'찰스', age:20};
+            // const b = {name:'찰스', age:25};
+            // const c = {name:'찰스', age:20};
+            // const d = a;
 
-            if (a === b) {
-                console.log('같다');
-            }
-            else {
-                console.log('다르다');
-            }
+            // if (a === b) {
+            //     console.log('같다');
+            // }
+            // else {
+            //     console.log('다르다');
+            // }
 
-            console.log('a === c : '+(a===c)); // false? 
-            console.log('a === d : '+(a===d)); // true?
+            // console.log('a === c : '+(a===c)); // false? 
+            // console.log('a === d : '+(a===d)); // true?
 
         </script>
     </body>
