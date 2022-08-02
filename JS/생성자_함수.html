@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <script>
+
+            // 프로그래밍을 하다보면 비슷한 객체를 여러 개 만들어야 하는 상황이 생긴다.
+            // 이런 상황에서 객체 리터럴을 빠르게 생성하도록 해주는 함수이다.
+
+            // new 함수명();을 하면, 함수내에 this 객체를 생성한다.
+            // 그 뒤, this에 property들을 추가한다.
+            // 마지막으로, this를 반환한다.
+            // this = {};와 return this;는 실제로 작성되어 있지 않지만 기능한다.
+            
+            // 생성자 함수는 앞 글자를 대문자로 만드는 것이 관례이다.
+
+            function Item(title, price) {
+                // this = {};
+                this.title = title;
+                this.price = price;
+                this.showPrice = function() {
+                    console.log(`가격은 ${price}원 입니다.`);
+                }
+                // return this;
+            }
+
+            // 생성자 함수는 잊지말고 new를 붙여주어야 한다.
+            // 비슷한 객체를 여러 개 만들때 사용할 수 있다.
+
+            const item1 = new Item('인형', 3000);
+            const item2 = new Item('가방', 4000);
+            // const item2 = Item('가방', 4000); => undefined가 나온다.
+            const item3 = new Item('지갑', 5000);
+
+            console.log(item1, item2, item3);
+
+            item1.showPrice();
+            item2.showPrice();
+            item3.showPrice();
+        </script>
+    </body>
+</html>

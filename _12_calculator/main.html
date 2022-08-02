@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JS_Calculator</title>
+        <style>
+            button {
+                width: 50px;
+                height: 50px;
+                margin: 5px;
+            }
+            #operator {
+                width : 45px;
+                height: 50px;
+                margin: 5px;
+                text-align:center
+            }
+            #result {
+                width: 170px;
+                height: 50px;
+                margin: 5px;
+                text-align: right;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <input readonly id="operator">
+            <input readonly id="result" type="number">
+        </div>
+        <div>
+            <button id="n7">7</button>
+            <button id="n8">8</button>
+            <button id="n9">9</button>
+            <button id="op_plus">+</button>
+        </div>
+        <div>
+            <button id="n4">4</button>
+            <button id="n5">5</button>
+            <button id="n6">6</button>
+            <button id="op_sub">-</button>
+        </div>
+        <div>
+            <button id="n1">1</button>
+            <button id="n2">2</button>
+            <button id="n3">3</button>
+            <button id="op_mult">*</button>
+        </div>
+        <div>
+            <button id="clear">Clear</button>
+            <button id="n0">0</button>
+            <button id="op_calc">=</button>
+            <button id="op_div">/</button>
+        </div>
+
+        <script>
+
+            let numFirst = ''; // 계산입력 첫번째 숫자.
+            let numSecond = ''; // 계산입력 두번째 숫자.
+            let op_input = null;
+
+            const cp_input_num = document.querySelector('#result');
+
+            // functional programming
+            // 실질적으로 functional programming을 하도록 만드는 함수를
+            // higher order function이라고 한다. (고차원 함수)
+
+            function funcA(k) { // function을 return하는 함수.
+                return () => {console.log('hello');};
+            }
+
+            function funcB (k, funck) { // function을 argument로 받는 함수.
+                funcK(k);
+            }
+
+            funcB(3, (v)=>{console.log(v+'를 입력하셨습니다.')});
+
+            
+
+            document.querySelector('#n0').addEventListener('click', () => {
+                if (op_input === null) {
+                    numFirst += '0';
+                    cp_input_num.value = numFirst; // const인데 가능? cp_input_num은 그냥 가리키는 변수?
+                }
+                else {
+                    numSecond += '0';
+                }
+            });
+
+            // string concatenation : 문자 이어붙이기로 숫자를 입력 받는다.
+            // functional programming : 프로그램 작성 시, function을 argument나 return으로 돌려줄 수 있는 언어를 이용하여
+            //                          프로그램을 짜는 것. (함수적 프로그래밍?, 고차원적인 언어)
+            
+        </script>
+    </body>
+</html>

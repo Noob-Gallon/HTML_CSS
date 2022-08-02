@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <script>
+
+            // computed property
+
+            let a = 'age';
+
+            const user1 = {
+                name : 'Mike',
+                // age : 30
+                [a] : 30 // 이와 같이 이용하면, 이미 선언된 a라는 변수의
+                         // 값 (age)로 property가 할당된다.
+            };
+
+            const user2 = {
+                [1 + 4] : 5,
+                ["안녕"+"하세요"] : "Hello"
+            }
+
+            console.log(user1, user2);
+
+            // ---------------------------------------------------------- Methods
+
+            // Object.assign() : 객체 복제
+            // 객체를 복제해서 같은 객체를 새롭게 만든다.
+
+            const user = {
+                name : 'Mike',
+                age : 30
+            };
+
+            // assign을 이용해서 빈 객체에 다른 객체를 넣기
+            const newUser = Object.assign({}, user);
+            // 왼쪽 인수는 초기값. 빈 객체에 user를 넣는다는 뜻.
+
+            console.log(user, newUser);
+
+            newUser.name = 'Teddy';
+
+            console.log(user, newUser); 
+            // 이름을 바꿔도 같이 바뀌지 않는다.
+            // 독립적인 객체로 생성됨을 알 수 있다.
+            // Object.assign
+
+            // assign을 이용해서 객체가 갖는 property를 지정하고, 
+            // 그 property 안에 다른 객체의 property를 넣기
+            const tmpUser = Object.assign({gender:'male'}, user);
+            console.log(tmpUser);
+
+            const aUser = {
+                name : 'Mike'
+            };
+
+            const info1 = {
+                age : 30,
+            };
+
+            const info2 = {
+                gender : 'Male'
+            };
+            
+            Object.assign(aUser, info1, info2);
+            console.log(aUser);
+
+            // ----------------------------------------------------------
+
+            // Object.keys() : 키 배열 반환
+            // Object.values() : 값 배열 반환
+            // Object.entries() : 키/값 배열 반환
+            // Object.fromEntries() : 키와 값을 각각 묶은 배열을 넣어주면, 
+            //                        객체로 만들어준다.
+
+            let n = "name";
+            let ag = "age";
+
+            // 대괄호 []를 이용해서 객체 내에서 변수명을 이미 선언된 변수의 값으로 지정하기
+            const new_user = {
+                [n]: "Mike",
+                [ag]: 30,
+                [1+4]: 5,
+                ["안녕?"]: "안녕하세요!"
+            };
+
+            function makeObj(key, val) {
+                return {    // 객체를 return 한다.
+                    [key]: val
+                }
+            };
+
+            const obj = makeObj("나이", 33);
+            const obj2 = makeObj("성별", "Male");
+            console.log(obj);
+            console.log(obj2);
+
+            // Object.assign을 이용해서 동일한 객체를 생성하기
+            const wow = Object.assign({}, new_user);
+            console.log(wow);
+            wow.name = "Tom";
+
+            console.log(wow);
+            console.log(new_user);
+
+            // keys를 이용해서 객체의 key를 얻기
+            const result1 = Object.keys(wow);
+            console.log(result1);
+
+            // values를 이용해서 객체의 value를 얻기
+            const result2 = Object.values(wow);
+            console.log(result2);
+
+            // entries를 이용해서 객체의 key와 value를 얻기
+            const result3 = Object.entries(wow);
+            console.log(result3);
+
+            let arr = [
+                ['mon', '월'],
+                ['tue', '화']
+            ];
+
+            // fromEntries를 이용해서 배열을 객체로 만들기
+            const result = Object.fromEntries(arr);
+            console.log(result);
+
+        </script>
+    </body>
+</html>
