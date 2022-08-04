@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>JS_Calculator</title>
+        <title>Javascript_Calculator</title>
         <style>
             button {
                 width: 50px;
@@ -47,50 +47,152 @@
             <button id="op_mult">*</button>
         </div>
         <div>
-            <button id="clear">Clear</button>
+            <button id="op_clr">Clear</button>
             <button id="n0">0</button>
             <button id="op_calc">=</button>
             <button id="op_div">/</button>
         </div>
 
         <script>
-
             let numFirst = ''; // 계산입력 첫번째 숫자.
             let numSecond = ''; // 계산입력 두번째 숫자.
-            let op_input = null;
-
-            const cp_input_num = document.querySelector('#result');
+            let op_input = null; // 입력된 연산자를 저장하는 변수
+            // op_input이 null이냐 아니냐에 따라 numFirst에 입력이 되냐 numSecond에 입력이 되냐가
+            // 결정되므로, op_input은 굉장히 중요한 값이다.
 
             // functional programming
             // 실질적으로 functional programming을 하도록 만드는 함수를
             // higher order function이라고 한다. (고차원 함수)
 
-            function funcA(k) { // function을 return하는 함수.
-                return () => {console.log('hello');};
-            }
+            // higer-order function
+            // const numFunc = (n /* 눌린 숫자 */) => { // n은 숫자(문자열)이 될 수 있다.
+            //     // 함수를 만들어서 return 한다. 진정한 higer-order function
+            //     return () => {
+            //         if (op_input === null) {
+            //         numFirst += n;
+            //         cp_input_num.value = numFirst; // const인데 가능? cp_input_num은 그냥 가리키는 변수?
+            //         }
+            //         else {
+            //             numSecond += n;
+            //             cp_input_num.value = numSecond;
+            //         }
+            //     }; 
+            // };
 
-            function funcB (k, funck) { // function을 argument로 받는 함수.
-                funcK(k);
-            }
-
-            funcB(3, (v)=>{console.log(v+'를 입력하셨습니다.')});
-
-            
-
-            document.querySelector('#n0').addEventListener('click', () => {
+            const numFunc = (n) => () => {
                 if (op_input === null) {
-                    numFirst += '0';
+                    numFirst += n;
                     cp_input_num.value = numFirst; // const인데 가능? cp_input_num은 그냥 가리키는 변수?
+                    }
+                    else {
+                        numSecond += n;
+                        cp_input_num.value = numSecond;
+                    }
+            }
+
+            // closure : 자신을 만들어주는 함수가 전달해준 인수. 여기서 자신은 함수이다.
+            // 의미
+            // 1) return하는 함수
+            // 2) return되는 함수가 쳐다볼 수 있는 변수의 범위
+            // Programming적으로 higer-order function 내에서 return 되는 함수는
+            // 전역변수 또는 자신이 선언한 변수만 사용할 수 있어야 하지만, 위에서 보면
+            // 자신을 만드는 함수가 전달하는 인수를 사용할 수 있게 된다.
+            // 이를 closure라고 하는데, closure는 두 개의 의미를 지닌다.
+            // 1) higer-order function이 return하는 함수 그 자체의 내용
+            // 2) higer-order function이 return되는 함수에 전달해주는 인수
+
+            // addEventListner Function도 higer-order function이다.
+            // why? argument로 Function을 받기 때문이다.
+
+            // higer-order function
+            const opFunc = (op) => () => { // 이렇게 설정하면, 함수를 return한다.
+                switch (op) {
+                    case '=':
+                        // const cp_input_num = document.querySelector('#result');
+                        // cp_input_num.value = ~~~;
+                        switch (op_input) {
+                            case '+':
+                                cp_input_num.value = parseInt(numFirst)+parseInt(numSecond);
+                                break;
+                            case '-':
+                                cp_input_num.value = parseInt(numFirst)-parseInt(numSecond);
+                                break;
+                            case '*':
+                                cp_input_num.value = parseInt(numFirst)*parseInt(numSecond);
+                                break;
+                            case '/':
+                                cp_input_num.value = parseInt(numFirst)/parseInt(numSecond);
+                                break;
+                        }
+                        break;
+                    case '+':
+                    case '-':
+                    case '*':
+                    case '/':
+                        op_input = op;
+                        console.log('op_iuput: '+op_input);
+                        cp_input_op.value = op_input;
+                        break;
+                    case 'clear':
+                        numFirst = '';
+                        numSecond = '';
+                        op_input = null;
+                        cp_input_num.value = '';
+                        cp_input_op.value = '';
+                        break;
                 }
-                else {
-                    numSecond += '0';
-                }
-            });
+            };
+
+            // 위의 것과 동일한 역할을 수행하는 함수의 선언 형태
+            // const opFunc_ex = (op) => () => {};
+            // opFunc는 op라는 인수를 받아서 뭔가를 하는 함수이고,
+            // 그 함수에서 뭔가를 return 한다.
+
+            const cp_input_num = document.querySelector('#result');
+            const cp_input_op = document.querySelector('#operator');
+            // document.querySelector를 통해 특정 id를 가리키는 const 변수를 통해
+            // id의 value를 바꿀 수 있다.
+
+            // numFunc라는 함수는 higer order function이기 때문에 return을 function으로 한다.
+            document.querySelector('#n0').addEventListener('click', numFunc('0'));
+            document.querySelector('#n1').addEventListener('click', numFunc('1'));
+            document.querySelector('#n2').addEventListener('click', numFunc('2'));
+            document.querySelector('#n3').addEventListener('click', numFunc('3'));
+            document.querySelector('#n4').addEventListener('click', numFunc('4'));
+            document.querySelector('#n5').addEventListener('click', numFunc('5'));
+            document.querySelector('#n6').addEventListener('click', numFunc('6'));
+            document.querySelector('#n7').addEventListener('click', numFunc('7'));
+            document.querySelector('#n8').addEventListener('click', numFunc('8'));
+            document.querySelector('#n9').addEventListener('click', numFunc('9'));
 
             // string concatenation : 문자 이어붙이기로 숫자를 입력 받는다.
             // functional programming : 프로그램 작성 시, function을 argument나 return으로 돌려줄 수 있는 언어를 이용하여
             //                          프로그램을 짜는 것. (함수적 프로그래밍?, 고차원적인 언어)
             
+            document.querySelector('#op_plus').addEventListener('click', opFunc('+'));
+            document.querySelector('#op_sub').addEventListener('click', opFunc('-'));
+            document.querySelector('#op_mult').addEventListener('click', opFunc('*'));
+            document.querySelector('#op_div').addEventListener('click', opFunc('/'));
+            document.querySelector('#op_calc').addEventListener('click', opFunc('='));
+            document.querySelector('#op_clr').addEventListener('click', opFunc('clear'));
+
+            // Functional Programming
+            // Higher-Order Function
+
+            // closure를 이용한 함수 선언
+            
+            const sumK = (a) => {
+                return (b) => {
+                    return a + b;
+                }
+            }
+
+            const sumK1 = (a) => (b) => {return a + b};
+            const sumK2 = (a) => (b) => {a + b};
+            const sumK3 = (a) => (b) => (a+b);
+
+            console.log(sumK(3)(4)); // sumK를 호출하는 방법
+
         </script>
     </body>
 </html>
