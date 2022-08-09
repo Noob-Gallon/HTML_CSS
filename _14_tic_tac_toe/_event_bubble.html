@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <div>
+            <div>
+                <input type="checkbox">
+                <label for="">운동</label>
+            </div>
+            <div>
+                <input type="checkbox">
+                <label for="">쇼핑</label>
+            </div>
+        </div>        
+
+        <script>       
+            const inputs = document.querySelectorAll('input');
+            // => 모든 것을 잡는다. querySelectorAll
+            // inputs 안에 모든 input이 배열 형태로 들어가 있다.
+            
+            inputs.forEach( (_ip, _idx) => {
+                _ip.addEventListener('click', () => {
+                    console.log(_idx+' bubble phase: input click event 발생');
+                    event.stopPropagation(); // propagation을 stop한다.
+                    // 다른 level에 있는 event listener는 전달한다.
+                    // 해당 level보다 높은 level로의 propagtion을 중지한다. (옆으로는 막지 못함)
+
+                    event.stopImmediatePropagation();  // propagation을 stop한다.
+                    // 이 method는 같은 level에 있는 다른 event listener도 중지한다.
+
+                }) // Bubble Phase 때 수행되는 Listener
+
+                // Capture Phase에서 수행되는 Listener
+                _ip.addEventListener('click', ()=>{
+                    console.log(_idx+' capture phase: input click event 발생');
+                }, true); // addEventListener 옵션에 ture를 넣어주면 capture phase 때 수행된다.
+            });
+
+            inputs.forEach( (_ip, _idx) => {
+                _ip.addEventListener('click', () => {
+                    console.log(_idx+' 두 번째 bubble phase event 발생');
+                }) // option이 비어있으므로,  false. bubble phase에서 수행.
+            });
+
+            // div에 대한 event listener
+            const divs = document.querySelectorAll('div');
+            divs.forEach( (_dv, _idx) => {
+                _dv.addEventListener('click', () => {
+                    console.log(_idx+' bubble phase: div 대한 event 발생');
+                })
+                _dv.addEventListener('click', () => {
+                    console.log(_idx+' capture phase: div에 대한 event 발생')
+                }, true);
+            })
+            // _idx를 출력하면, click된 오브젝트가 포함된 div의 _idx가 출력.
+            // document.querySelectorAll은 모두 다 가져오므로,
+            // 선택된 모든 div에 대해서 divs에 들어가게 된다.
+
+            // event(input)를 click하는 순간, 위에서 부터 타고 들어오게 된다.
+            // 즉, 가장 큰 div-> 중간 div-> input 이 순으로 실행이 된다.
+            // 이렇게 event 실행 시에 안으로 타고 들어오는 과정을
+            // Event Capture Phase, 이벤트 생포 단계라고 한다.
+            // event는 상품 구조로 되어있기 때문에 가장 큰 구조부터 들어간다.
+            // 이 때 찾은 event 위치를 target phase라고 한다.
+
+            // 이 것이 끝나고 바깥으로 나오는 과정을 bubble phase라고 한다.
+
+            // Javascript Event Eandler Phases
+            // 1. (Event) Capture Phase
+            // 2. Target Phase
+            // 3. (Event) Bubble Phse
+            // => Event Listener는 3번, Bubble Phase에서 실행된다.
+            // 그렇기 때문에, console.log(_idx)를 했을 때 안 쪽에 있는
+            // 것의 _idx부터 출력되는 것이다. (역방향 순서, 떠오르는 순서)
+
+            // GUI를 갖는 Application을 개발할 때 공통적으로 사용되는 개념.
+            // 대부분의 event 처리는 Bubble Phase에서 수행이 된다.
+
+            // propagation : 전달
+            // stopPropagation을 이용해 event의 phase를 중지할 수 있음.
+            
+
+        </script>
+    </body>
+</html>

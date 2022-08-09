@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <script>
+
+            // setTimeout : 일정 시간 후에, 단위는 ms
+            
+            const hello = () => {console.log('안녕')}
+
+            setTimeout(hello, 3000);
+            // setTimeout(hello(), 3000);
+            // => 오류 발생, hello는 return이 없으므로 undefined이다.
+            // 따라서 그냥 hello로 넣어주어야 한다.
+
+            setTimeout(()=>{console.log('화살함수, 안녕')}, 3000);
+
+            // setInterval : 일정 주기로 실행
+            // setInterval과 같이 쓰이는 함수.
+            // clearInterval : setInterval을 clear한다. (주기함수 종료)
+
+            // _id = setInterval()
+            // clearInteval(_id) 종료하는 방법
+
+            const _id = setInterval(hello, 1000);
+            setTimeout(()=>{
+                clearInterval(_id);
+                console.log('clearInterval이 호출 되었음.');
+            }, 5000);
+
+        </script>        
+    </body>
+</html>

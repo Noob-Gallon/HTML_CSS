@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>event delegation</title>
+    </head>
+    <body>
+        <div id = 'outside'>
+            <input type="checkbox" id="i1">
+            <label for="">운동</label>
+            <input type="checkbox" id="i2">
+            <label for="">쇼핑</label>
+            <input type="checkbox" id="i3">
+            <label for="">식사</label>
+            <input type="checkbox" id="i4">
+            <label for="">수면</label>
+        </div>
+
+        <script>
+            // event delegation, 이벤트 위임
+            // 가장 위에 있는 놈이 위임받아서 한 번에 처리한다.
+            // parent에만 eventListener를 걸어도 그 안에서 일어나는
+            // child event를 다 catch할 수 있다는 것.
+
+            const cp_div = document.querySelector('#outside');
+
+            cp_div.addEventListener('click', (event) => {
+                // console.log('cp_div 이벤트 발생 ---> ', event.target.tagName);
+                if (event.target.id === 'i1') {
+                    console.log('운동');
+                }
+                else if (event.target.id === 'i2') {
+                    console.log('쇼핑');
+                }
+                else if (event.target.id === 'i3') {
+                    console.log('식사');
+                }
+                else if (event.target.id === 'i4') {
+                    console.log('수면');
+                }
+            })
+
+            cp_div.addEventListener('click', (event) => {
+                console.log('div event 처리');
+            })
+
+            // parent(최상위 div)에 Event를 걸어도, child(input)에서 발생하는 event
+            // 모두 잡을 수 있다.
+
+        </script>
+    </body>
+</html>

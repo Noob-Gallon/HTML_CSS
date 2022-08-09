@@ -136,6 +136,24 @@
             // myArray.push('orange');
             // console.log(myArray);
 
+            // 그러고 보니까 const로 선언한 array가 어떻게 수정이 되는거지?
+            const array = [];
+            array.push('hey');
+            array.splice(1,0,'wow', 3.14, 55, 'yours');
+            array.splice(0,3, 'deleted');
+            console.log(array);
+            console.log(array.includes('yours'));
+            console.log(array.indexOf('yours'));
+            array.push('yours');
+            console.log(array);
+            array.splice(array.length, 0, 'yours');
+            console.log(array);
+            console.log(array.lastIndexOf('yours'));
+            console.log(array.lastIndexOf('yours', 3));
+            // lastIndexOf는 fromIdx부터 찾는다.
+
+            
+
             // -------------------------------------------------------------- //
 
         </script>

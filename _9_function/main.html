@@ -116,6 +116,20 @@
             // person.age = 35;
             // console.log('person name : '+person.age);
 
+            const newOjLiteral = {name:'정동교',  age:23};
+            console.log(Object.keys(newOjLiteral));
+
+            let ojFunc = (oj) => {
+                const keys = Object.keys(oj);
+                console.log(keys);
+
+                keys.forEach((elem, idx) => {
+                    console.log(`element : ${elem}, index : ${idx}`);
+                })
+            }
+
+            ojFunc(newOjLiteral);
+
             //   ---------------------------------------------------------------------
 
             // function parameter ---> 함수 선언할 때 써주는 것은 parameter라고 하며,
