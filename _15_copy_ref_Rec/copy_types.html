@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <script>
+            let a = 1;
+            let b = a;
+            /* 1) b가 a와 같은 칸을 공유하거나(참조), 2) a를 복사해서 같은 것. */
+            // 기초적인 data type(primitive)은 ref가 아니라, 그냥 복사해서 각자의 공간으로 남는다.
+            b = 10;
+
+            console.log(`a is ${a}`);
+            console.log(`b is ${b}`);
+
+
+
+
+
+            // object : key, value
+            const c = {name:'alice', age:20};
+            console.log('before ', c);
+
+            const d = c;
+            c.name = 'tom';
+
+            console.log('after ', c);
+            console.log('after ', d);
+
+        </script>
+    </body>
+</html>
+
+<!-- 
+Copy (복사)
+
+Shallow Copy (얕은 복사)
+Deep Copy (깊은 복사)
+
+Reference (참조)
+ -->
