@@ -1,0 +1,26 @@
+<html>
+
+    <head>
+
+        <!-- 
+        HTML Download가 끝나면 1) Webserver에서 rendering 진행.
+        그래픽적으로 어떻게 표현할 것인가?...
+    
+        2) run JS, 화면이 동작하게 함... 
+
+        HTML과 JS를 동시에 다운로드 받지만, 만약 JS가 먼저 다운로드 된다면 일반적으로 JS를 먼저 실행한다.(HTML은 그래픽 설정이라 용량이 크다.)
+        -> 렌더링이 안된 상태.(그래픽 표현 X) 그 상태에서 JS가 먼저 실행되면 화면이 깨지거나 에러가 발생할 수 있음.
+        이 때, defer를 사용한 다. (defer : 미루다, 늦추다) JS가 다운로드가 먼저 끝나더라도, HTML이 다 로딩될 때까지 기다렸다가 run JS를 한다...
+        -->
+        <script src="./promise3.js" defer></script>
+
+    </head>
+
+    <body>
+        
+        <h1>
+            Hello
+        </h1>
+
+    </body>
+</html>

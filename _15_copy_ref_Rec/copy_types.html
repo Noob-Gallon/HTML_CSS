@@ -5,28 +5,46 @@
     </head>
     <body>
         <script>
-            let a = 1;
-            let b = a;
-            /* 1) b가 a와 같은 칸을 공유하거나(참조), 2) a를 복사해서 같은 것. */
-            // 기초적인 data type(primitive)은 ref가 아니라, 그냥 복사해서 각자의 공간으로 남는다.
-            b = 10;
 
-            console.log(`a is ${a}`);
-            console.log(`b is ${b}`);
+            const arrA = [1, 2, 3]
+            const arrB = arrA
 
+            console.log('before ', arrA)
+            arrB[1] = 200
+            console.log('after ', arrA)
 
-
-
+            arrA.forEach((v, idx) => {
+                console.log(`${idx} : ${v}`)
+            })
 
             // object : key, value
-            const c = {name:'alice', age:20};
-            console.log('before ', c);
+            // primitive type이 아닌 type은 기본적으로 copy가 아닌 reference를 이용한다.
+            // assignment를 하면 참조를 하게된다.
 
-            const d = c;
-            c.name = 'tom';
+            // c는 const로 선언됐기 때문에 다른 것을 가리킬 수 없다.
 
-            console.log('after ', c);
-            console.log('after ', d);
+            const a = {name:'alice', age:20}
+            let b = a
+            console.log('before ', a)
+            const c = {name:'john', age:21}
+
+            // const가 object, 객체를 가리킬 때의 의미는
+            // 다른 객체를 가리키는 것에 대해서는 문제가 되지만,
+            // 가리키고 있는 객체가 같을 때, 그 안에 있는 내용을
+            // 바꾸는 것에 대해서는 허용한다. (kotlin의 val과 동일하다.)
+            b.name = 'tom'
+
+            // b는 const로써, 처음에 assignment될 때 a를 가리키도록 했으므로,
+            // b = c를 실행하면 오류가 발생한다. b를 let으로 선언하면 오류가 발생하지 않는다.
+            b = c
+            
+            console.log('after ', a)
+
+            // const d = c;
+            // d.name = 'Tom'
+
+            // console.log('after ', c)
+            // console.log('after ', d)
 
         </script>
     </body>

@@ -1,0 +1,46 @@
+<head>
+    <body>
+    <script>
+        const obj = {
+            name : 'john',
+            age : 20,
+            address : {
+                city: 'incheon',
+                street: 10
+            }
+        }
+
+        console.log('obj : ', obj.name, obj['age'], obj.address.city, obj.address.street)
+
+        // assign은 eqaul과 같다.
+        // 왼쪽의 빈 객체에 a를 넣고, b는 복사된 {a}를 갖게 된다.
+        // primitive data type은 올바르게 복사가 되지만,
+        // object type일 경우에는 똑같은 현상이 발생해서
+        // copy가 아니라 reference가 된다.
+
+        // primitive type의 복사는 shallow copy(얕은 복사)라고 한다.
+        // 복잡한 부분은 reference를 남기고, 복사를 하지 못하는 것.
+        // 얕은 물에 있어서 건지기 쉬운 것들은 쉽게 쉽게 건져오지만
+        // 깊은 물에 있어서(object) 건지기 어려운 것들은 쉽게 가져오지 못하고 공유한다.
+
+        // 우리가 아는 copy인 deep copy를 하기 위해서는 조금 다른 방법을 이용해야한다.
+        const obj2 = Object.assign({}, obj) // primitive만 복사하는 Shallow Copy를 지원한다.
+    
+        obj2.name = 'alice'
+        obj2.address.city = 'seoul'
+
+        console.log('after------------------')
+        console.log('obj : ', obj.name, obj['age'], obj.address.city, obj.address.street)
+        console.log('obj2 : ', obj2.name, obj2['age'], obj2.address.city, obj.address.street)
+
+        // object : key, value
+        const a = [1, 2, 3]
+        const b = [...a] // copy, 배열도 복사가 된다.
+        // 이 상황에서는, b가 a를 가리키지 않고 새롭게 만들어진 객체가 되므로,
+        // b의 값을 바꾸어도 a의 값이 바뀌지 않는다.
+        b[1] = 200
+
+        console.log(a)
+    </script>
+    </body>
+</head>

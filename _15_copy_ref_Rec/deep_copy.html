@@ -1,0 +1,36 @@
+<head>
+    <body>
+        
+    <script>
+        const a = {
+            name : 'john',
+            age : 20,
+            address : {
+                city: 'incheon',
+                street: 10
+            }
+        }
+
+        // JSON.stringfy(a) -> JSON 형식으로 바꾸라는 말. (다른 컴퓨터로 전송하고 싶을 때, 변경)
+        // JSON.parse() -> 그걸 다시 parse(분해) 한다.
+        // object를 문자열로 바꾸어주고, 그 문자열을 기준으로 새로운 문자열을 만들어버리는 것이므로,
+        // Deep Copy가 지원된다.
+        
+        const b = JSON.parse(JSON.stringify(a)) // ===> Deep Copy
+        // JSON
+        // Program 안에 들어있는 object를
+        // 문자열로 뜯어내서 표현하는 데이터 표현 방식.
+        // 네트워크 통신을 위해 필요함.
+        // 웹서버와 클라우드 사이에 데이터를 주고받을 때 사용된다.
+        // Kotlin Android 통신에도 필요!!!
+
+        console.log('after-------------------------')
+        console.log('a : ', a.name, a.age, a.address.city, a.address.street)
+
+        b.name = 'alice'
+        b.address.city = 'seoul'
+        console.log('b : ', b.name, b.age, b.address.city, b.address.street)
+    </script>
+
+    </body>
+</head>

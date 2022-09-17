@@ -1,0 +1,23 @@
+<head>
+    <body>
+        <script>
+
+            const a = ['alice', 20, {city: 'incheon', street: 10}]
+            console.log('before: -------------------')
+            console.log(a[0], a[1], a[2].city, a[2].street)
+
+            // const b = [...a] // ---> 일종의 Shallow Copy
+            // 결국 Deep Copy는 전부 JSON을 이용해서 이루어진다는 것...
+            const b = JSON.parse(JSON.stringify(a))
+            b[0] = 'john'
+            b[1] = 20000
+            b[2].city = 'seoul'
+            b[2].street = 555
+
+            console.log('after --------------------')
+            console.log(a[0], a[1], a[2].city, a[2].street)
+            console.log(b[0], b[1], b[2].city, b[2].street)
+
+        </script>
+    </body>
+</head>

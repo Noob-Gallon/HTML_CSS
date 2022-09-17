@@ -1,0 +1,76 @@
+<head>
+    <body>
+        
+        <script>
+
+            // Class: creates object
+
+            // object는 관련된 정보를 하나로 묶어 놓는 정보의 집합이다.
+            // const o = {
+            //     name : "Tom",
+            //     age : 20
+            // }
+
+            'use strict'
+            
+            class Person {
+                constructor(_name, _age) {
+                    this.name = _name
+                    this.age = _age
+                }
+
+                // js나 python은 method 안에서 member, field, attribute를 새롭게
+                // 붙여넣을 수 있도록 만들었다. 전통적으로 프로그래밍을 오랫동안 한 사람들은
+                // 이런게 낯설 수도 있다. 그런데, 이것의 문제점은 바로 가독성이다.
+                // 이런 method 들이 구석탱이에 박혀있으면 정보를 얻기가 힘들다.
+
+                add_city_info(_city) {
+                    this.city = _city
+                }
+
+                show_info() {
+                    console.log(`${this.name} is ${this.age} years old. He(She) lives in ${this.city}`)
+                }
+
+                is_older_than(_value) {
+                    if (this.age > _value) {
+                        return true
+                    } else {
+                        return false
+                    }
+                }
+            }
+
+            // C++에서는 multiple inheritance가 가능하다.
+            // Javascript에서는 하나의 부모로부터만 상속을 받을 수 있도록 한다.
+            class Student extends Person {
+                constructor(_name, _age, _dream) {
+                    super(_name, _age)
+                    this.dream = _dream
+                }
+
+                show_info() {
+                    super.show_info()
+                    console.log(`His(Her) dream is to be a ${this.dream}`)    
+                }
+            }
+
+            const s = new Student('Tom', 19, 'pilot')
+            s.add_city_info('Incheon')
+            s.show_info()
+            console.log(`${s.name} is older than 19 : ${s.is_older_than(19)}`)
+
+            const p = new Person("Jim", 20)
+            const q = new Person("Jane", 21)
+            p.add_city_info('Busan')
+            q.add_city_info('Seoul')
+            
+            p.show_info()
+            q.show_info()
+
+            console.log(`${p.name} is older than 19? : ${p.is_older_than(19)}`)
+
+        </script>
+
+    </body>
+</head>
